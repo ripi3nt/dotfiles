@@ -1,0 +1,51 @@
+$background-color: #181616;
+$text-color: #c5c9c5;
+$foreground-color: #282626;
+$third-color: #e46876;
+
+* {
+  all: unset;
+  font-family: Anonymice Nerd Font Mono;
+}
+.container {
+  background-color: $background-color;
+  color: whitesmoke;
+  padding: 6px;
+}
+
+.inactive-button {
+  background-color: $background-color;
+  color: $foreground-color;
+}
+
+.active-button {
+  background-color: $background-color;
+  color: $third-color;
+}
+
+.subcontainer {
+  background-color: $foreground-color;
+  border-radius: 7px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.pfp {
+  background-image: url("assets/pfp.jpg");
+  background-size: 30px;
+  border-radius: 100%;
+}
+
+.time {
+  color: $text-color;
+}
+
+.bat-icon {
+  color: $third-color;
+  font-size: 16px;
+}
+
+.bat-perc {
+  color: $text-color;
+  font-size: 10px;
+}

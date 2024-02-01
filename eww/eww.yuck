@@ -1,0 +1,151 @@
+(include "dashboard.yuck")
+
+(defwindow side-bar
+           :monitor 0
+           :geometry (geometry :x "0"
+                               :y "0"
+                               :width "40px"
+                               :height "100%"
+                               :anchor "left center")
+           :stacking "fg"
+           :windowtype "dock"
+           :wm-ignore false
+           (bar)
+)
+
+(defpoll hour 
+  :interval "1m"
+  :initial "00"
+  "date +%H"
+)
+
+(defpoll min 
+  :interval "1m"
+  :initial "00"
+  "date +%M"
+)
+
+(defwidget time []
+  (box
+    :class "time"
+    :orientation "v"
+    (label 
+      :text "${hour}"
+    )
+    (label 
+      :text "${min}"
+    )
+  )
+)
+
+(defvar activews 1)
+
+(defwidget workspaces []
+  (box
+    :orientation "v"
+    :space-evenly false
+    :spacing 5
+
+    (button :class {activews==1 ? "active-button" : "inactive-button"} "一" )
+    (button :class {activews==2 ? "active-button" : "inactive-button"}"二" )
+    (button :class {activews==3 ? "active-button" : "inactive-button"}"三" )
+    (button :class {activews==4 ? "active-button" : "inactive-button"}"四" )
+    (button :class {activews==5 ? "active-button" : "inactive-button"}"五" )
+    (button :class {activews==6 ? "active-button" : "inactive-button"}"六" )
+    (button :class {activews==7 ? "active-button" : "inactive-button"}"七" )
+    (button :class {activews==8 ? "active-button" : "inactive-button"}"八" )
+    (button :class {activews==9 ? "active-button" : "inactive-button"}"九" )
+    (button :class {activews==10 ? "active-button" : "inactive-button"}"十" )
+  )
+)
+
+(defvar powersave true)
+
+(defwidget pfp[]
+  (box
+    :class "pfp"
+    :width 30
+    :height 30
+  )
+)
+
+(defvar bat false)
+
+(defwidget battery[]
+  (eventbox
+    :onhover "eww update bat=true"
+    :onhoverlost "eww update bat=false"
+    :onclick "eww update powersave=${!powersave}"
+    (box
+      :orientation "v"
+      :space-evenly false
+      (label :class "bat-icon" :text "󰁹")
+      (revealer
+        :reveal bat 
+        :transition "slidedown"
+        (label :class "bat-perc" :text "${EWW_BATTERY["BAT1"].capacity}%")
+      )
+    )
+  )
+)
+
+(defvar bright false)
+
+(defwidget brightness[]
+  (eventbox
+    :onhover "eww update bright=true"
+    :onhoverlost "eww update bright=false"
+    (box
+      :orientation "v"
+      :space-evenly false
+      (label :style "color:yellow; font-size:16px" :text "󰃠")
+      (revealer
+        :reveal bright
+        :transition "slidedown"
+        (scale
+          :flipped true
+          :min 1
+          :max 100
+          :value 90
+          :orientation "v"
+          :onchange "echo hello"
+        )
+      )
+    )
+  )
+)
+
+(defwidget info[]
+  (box
+    :class "subcontainer"
+    :orientation "v"
+    :spacing 10
+    :space-evenly false
+    (battery)
+    (time)
+  )
+)
+
+(defwidget main[]
+  (box
+    :orientation "v"
+    :space-evenly false
+    :valign "end"
+    :spacing 10
+    (info)
+    (pfp)
+  )
+)
+
+(defwidget bar []
+  (centerbox
+    :class "container"
+    :orientation "v"
+
+    (workspaces)
+    (box)
+    (main)
+
+  )
+
+)
