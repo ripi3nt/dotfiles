@@ -11,10 +11,60 @@
            (dashboard)
 )
 
+(defvar dashboard false)
+
+(defwidget profile[]
+  (box
+    :class "container"
+    "Profile"
+  )
+)
+
+(defwidget todo[]
+  (box
+    :class "container"
+    "Todo"
+  )
+)
+
+(defwidget left[]
+  (box
+    :orientation "v"
+    :spacing 15
+    (profile)
+    (todo)
+  )
+)
+
+(defwidget music[]
+  (box
+    :class "container"
+    "Music"
+  )
+)
+
+(defwidget stats[]
+  (box
+    :class "container"
+    "Stats"
+  )
+)
+
+(defwidget right[]
+  (box
+    :orientation "v"
+    :spacing 15
+    (music)
+    (stats)
+  )
+)
 
 (defwidget dashboard[]
-  (box 
-    :style "background-color:black"
-  )
+    (box
+      :style "background-color:black"
+      :spacing 15
+      (left)
+      (right)
+    )
 )
 
