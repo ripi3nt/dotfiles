@@ -6,7 +6,11 @@ require("lazy").setup({
 	{"windwp/nvim-autopairs"},
 	{"nvim-tree/nvim-web-devicons"},
 	{"nvim-tree/nvim-tree.lua"},
-	{"rebelot/kanagawa.nvim"}
+	{"rebelot/kanagawa.nvim"},
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+}
 })
 
 require("plugins")
