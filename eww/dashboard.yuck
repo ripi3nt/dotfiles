@@ -33,7 +33,6 @@
            (notifications)
 )
 
-//implement reading notif from somewhere
 (defvar notifications "[1, 2 ,3]")
 
 (defwidget notifications[]
@@ -52,4 +51,47 @@
   )
 )
 
+(defwindow music
+           :monitor 0
+           :geometry (geometry :x "610px"
+                               :y "100px"
+                               :width "200px"
+                               :height "250px"
+                               )
+           :stacking "fg"
+           (music)
+)
 
+(defpoll song-title :inital "Title" :interval "10s" "mpc current")
+(defpoll album-art :inital "" :interval "10s" "~/.scripts/album-art.sh")
+
+(defwidget music[]
+  (box
+    :class "music"
+    :orientation "v"
+    (image :path "${album-art}" :image-width 150 :image-height 150)
+    (label :text "${song-title}")
+    (box
+      :space-evenly true
+      (eventbox :onclick "mpc prev" 
+        (box
+          :class "control-button"
+          "󰒮"
+        )
+      )
+      (eventbox :onclick "mpc toggle" 
+        (box
+          :class "control-button"
+          ""
+        )
+      )
+      (eventbox :onclick "mpc next" 
+        (box
+          :class "control-button"
+          "󰒭"
+        )
+      )
+    )
+  )
+
+)
