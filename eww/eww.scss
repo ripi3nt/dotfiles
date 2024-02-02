@@ -49,3 +49,26 @@ $third-color: #e46876;
   color: $text-color;
   font-size: 10px;
 }
+
+/* dashboard */
+
+.profile {
+  background-color: $background-color;
+  padding: 15px;
+  color: $text-color;
+  font-size: 24px;
+}
+
+.big-pfp {
+  background-image: url("assets/pfp.jpg");
+  background-size: cover;
+  min-height: 100px;
+  min-width: 100px;
+  border-radius: 100%;
+}
+
+.notifications {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 15px;
+}

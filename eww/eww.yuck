@@ -14,13 +14,13 @@
 )
 
 (defpoll hour 
-  :interval "1m"
+  :interval "10s"
   :initial "00"
   "date +%H"
 )
 
 (defpoll min 
-  :interval "1m"
+  :interval "10s"
   :initial "00"
   "date +%M"
 )

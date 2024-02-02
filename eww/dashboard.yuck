@@ -1,70 +1,55 @@
-(defwindow dashboard
-           :monitor 0
-           :geometry (geometry :x "50%"
-                               :y "50%"
-                               :width "50%"
-                               :height "50%"
-                               :anchor "center")
-           :stacking "fg"
-           :windowtype "dock"
-           :wm-ignore false
-           (dashboard)
-)
-
 (defvar dashboard false)
+
+(defwindow profile
+           :monitor 0
+           :geometry (geometry :x "350px"
+                               :y "100px"
+                               :width "250px"
+                               :height "250px"
+                               )
+           :stacking "fg"
+           (profile)
+)
 
 (defwidget profile[]
   (box
-    :class "container"
-    "Profile"
-  )
-)
-
-(defwidget todo[]
-  (box
-    :class "container"
-    "Todo"
-  )
-)
-
-(defwidget left[]
-  (box
+    :class "profile"
     :orientation "v"
-    :spacing 15
-    (profile)
-    (todo)
+    :valign "center"
+    :halign "center"
+    (box :class "big-pfp")
+    (label :text "ripient" :style "font-size: 24px; font-weight:bold")
   )
 )
 
-(defwidget music[]
-  (box
-    :class "container"
-    "Music"
-  )
+(defwindow notifications
+           :monitor 0
+           :geometry (geometry :x "350px"
+                               :y "360px"
+                               :width "250px"
+                               :height "170px"
+                               )
+           :stacking "fg"
+           (notifications)
 )
 
-(defwidget stats[]
-  (box
-    :class "container"
-    "Stats"
-  )
-)
+//implement reading notif from somewhere
+(defvar notifications "[1, 2 ,3]")
 
-(defwidget right[]
+(defwidget notifications[]
   (box
+    :class "notifications"
     :orientation "v"
-    :spacing 15
-    (music)
-    (stats)
+    :valign "start"
+    :halign "start"
+    (label :style "font-size: 18px"  :text "Notifications:")
+      (box
+        :orientation "v"
+        (for entry in notifications
+          (label :text "- ${entry}" :xalign 0.1)
+        )
+      )
   )
 )
 
-(defwidget dashboard[]
-    (box
-      :style "background-color:black"
-      :spacing 15
-      (left)
-      (right)
-    )
-)
 
