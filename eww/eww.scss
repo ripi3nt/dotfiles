@@ -100,3 +100,32 @@ $third-color: #e46876;
   border-radius: 7px;
 }
 
+.stats {
+  padding: 15px;
+  background-color: $background-color;
+}
+
+.bat-prog {
+  background-color: $foreground-color;
+  color: $third-color;
+}
+
+.cpu-prog {
+  background-color: $foreground-color;
+  color: #8ba4b0;
+}
+
+.mem-prog {
+  background-color: $foreground-color;
+  color: #c4b28a;
+}
+
+.cpu-icon {
+  color: #8ba4b0;
+  font-size: 16px;
+}
+
+.mem-icon {
+  color: #c4b28a;
+  font-size: 16px;
+}

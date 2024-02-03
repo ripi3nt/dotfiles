@@ -65,6 +65,7 @@
 (defpoll song-title :inital "Title" :interval "10s" "mpc current")
 (defpoll album-art :inital "" :interval "10s" "~/.scripts/album-art.sh")
 
+
 (defwidget music[]
   (box
     :class "music"
@@ -98,3 +99,56 @@
   )
 
 )
+
+(defwindow stats
+           :monitor 0
+           :geometry (geometry :x "610px"
+                               :y "410px"
+                               :width "230px"
+                               :height "150px"
+                               )
+           :stacking "fg"
+           (stats)
+)
+
+(defwidget stats[]
+  (box 
+    :class "stats"
+    :spacing 10
+    
+    (overlay
+      (circular-progress
+        :value {EWW_BATTERY["BAT1"].capacity}
+        :start-at 0
+        :thickness 3
+        :clockwise true
+        :class "bat-prog"
+      )
+      
+      (label :class "bat-icon" :text "󰁹")
+    )
+    (overlay
+      (circular-progress
+        :value {EWW_CPU.avg}
+        :start-at 0
+        :thickness 3
+        :clockwise true
+        :class "cpu-prog"
+      )
+      (label :class "cpu-icon" :xalign 0.46 :text "")
+    )
+    (overlay
+      (circular-progress
+        :value {EWW_RAM.used_mem_perc}
+        :start-at 0
+        :thickness 3
+        :clockwise true
+        :class "mem-prog"
+      )
+      
+      (label :class "mem-icon" :text "󰍛")
+    )
+  )
+  
+)
+
