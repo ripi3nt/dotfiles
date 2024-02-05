@@ -1,7 +1,7 @@
 prompt=
 width=240
 height=360
-mode=drun
+mode=dmenu
 insensitive=true
 no_actions=true
 location=center
