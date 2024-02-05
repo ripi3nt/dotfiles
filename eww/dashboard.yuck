@@ -62,8 +62,8 @@
            (music)
 )
 
-(defpoll song-title :inital "Title" :interval "10s" "mpc current")
-(defpoll album-art :inital "" :interval "10s" "~/.scripts/album-art.sh")
+(defpoll song-title :initial "Title" :interval "10s" "mpc current")
+(defpoll album-art :interval "10s" "~/.scripts/album-art.sh")
 
 
 (defwidget music[]
@@ -73,8 +73,8 @@
     :space-evenly false
     :spacing 10
     (image :path "${album-art}" :image-width 200 :image-height 200 :class "album-art")
-    (label :text "${song-title}")
-    (progress :value 10 :min 0 :max 100 :class "song-progress")
+    (label :wrap true :width 200 :justify "center" :text "${song-title}")
+    (progress :value 50 :class "song-progress")
     (box
       :space-evenly true
       (eventbox :onclick "mpc prev" 

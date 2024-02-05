@@ -84,21 +84,14 @@ $third-color: #e46876;
   border-radius: 100%;
 }
 
-.album-art {
-  background-image: linear-gradient(#00000000, $background-color);
-}
-
-.song-progress trough {
+.song-progress {
   background-color: $foreground-color;
+  color: $third-color;
   border-radius: 7px;
   min-height: 7px;
   min-width: 200px;
 }
 
-.song-progress highlight {
-  background-color: $third-color;
-  border-radius: 7px;
-}
 
 .stats {
   padding: 15px;
