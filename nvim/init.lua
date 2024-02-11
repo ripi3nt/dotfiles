@@ -9,7 +9,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-nvim-lsp" },
   { "saadparwaiz1/cmp_luasnip" },
   { "L3MON4D3/LuaSnip" },
-  { "windwp/nvim-autopairs" },
+  { "windwp/nvim-autopairs", event = "InsertEnter", opts = {}},
   { "nvim-tree/nvim-web-devicons" },
   { "nvim-tree/nvim-tree.lua" },
   { "rebelot/kanagawa.nvim" },
@@ -34,6 +34,7 @@ require("lazy").setup({
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
+  {"onsails/lspkind.nvim"}
 })
 
 require("plugins")
@@ -43,8 +44,8 @@ require("plugins")
 vim.api.nvim_set_keymap("n", " fv", ":NvimTreeFocus\n", {})
 
 --Tabs
-vim.api.nvim_set_keymap("n", "tn", ":BufferNext\n", {})
-vim.api.nvim_set_keymap("n", "tp", ":BufferPrevious\n", {})
+vim.api.nvim_set_keymap("n", "tl", ":BufferNext\n", {})
+vim.api.nvim_set_keymap("n", "th", ":BufferPrevious\n", {})
 vim.api.nvim_set_keymap("n", "tq", ":BufferClose\n", { noremap = true, silent = true })
 
 vim.wo.number = true

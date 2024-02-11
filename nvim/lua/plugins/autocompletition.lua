@@ -6,6 +6,8 @@ local lspconfig = require('lspconfig')
 -- luasnip setup
 local luasnip = require 'luasnip'
 
+local lspkind = require('lspkind')
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -23,7 +25,7 @@ cmp.setup {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
     },
-    ['<space>'] = cmp.mapping(function(fallback)
+    --[[['<space>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -32,6 +34,7 @@ cmp.setup {
         fallback()
       end
     end, { 'i', 's' }),
+    --]]
     ['<S-Tab>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -46,6 +49,16 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
   },
+  formatting = {
+    format = lspkind.cmp_format({
+      mode = 'symbol', -- show only symbol annotations
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+                     -- can also be a function to dynamically calculate max width such as 
+                     -- maxwidth = function() return math.floor(0.45 * vim.o.columns) end,
+      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+      show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+    })
+  }
 }
 
 -- If you want insert `(` after select function or method item
