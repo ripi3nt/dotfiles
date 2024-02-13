@@ -54,7 +54,7 @@
 (defwindow music
            :monitor 0
            :geometry (geometry :x "610px"
-                               :y "100px"
+                               :y "260px"
                                :width "200px"
                                :height "250px"
                                )
@@ -64,6 +64,7 @@
 
 (defpoll song-title :initial "Title" :interval "10s" "mpc current")
 (defpoll album-art :interval "10s" "~/.scripts/album-art.sh")
+(defpoll song-progress :interval "1s" "")
 
 
 (defwidget music[]
@@ -72,9 +73,9 @@
     :orientation "v"
     :space-evenly false
     :spacing 10
-    (image :path "${album-art}" :image-width 200 :image-height 200 :class "album-art")
+    (image :style "background-image: url('${album-art}')" :class "album-art")
     (label :wrap true :width 200 :justify "center" :text "${song-title}")
-    (progress :value 50 :class "song-progress")
+    (scale :class "song-progress" :min 0 :active "true" :max 100 :value 50)
     (box
       :space-evenly true
       (eventbox :onclick "mpc prev" 
@@ -103,7 +104,7 @@
 (defwindow stats
            :monitor 0
            :geometry (geometry :x "610px"
-                               :y "410px"
+                               :y "100px"
                                :width "230px"
                                :height "150px"
                                )

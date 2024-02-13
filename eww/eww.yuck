@@ -79,7 +79,7 @@
     (box
       :orientation "v"
       :space-evenly false
-      (label :class "bat-icon" :text "󰁹")
+      (label :class "bat-icon" :xalign 0.55 :text "󰁹")
       (revealer
         :reveal bat 
         :transition "slidedown"
